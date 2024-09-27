@@ -1,4 +1,6 @@
-﻿namespace LinkedList
+﻿using System.Runtime.CompilerServices;
+
+namespace LinkedList
 {
     internal class Program
     {
@@ -82,14 +84,45 @@
 
             SimpleDictioanry<string, int> shoeSize= new SimpleDictioanry<string, int>();
 
-            shoeSize.Add("Sara", 39);
             shoeSize.Add("Lasse", 43);
-            shoeSize.Add("Anton", 45);
-            shoeSize.Add("Vera", 37);
             shoeSize.Add("Peter", 42);
+            shoeSize.Add("Vera", 37);
 
-            Console.WriteLine("Simple Dictionary:");
-            Console.WriteLine("Veras shoe size is " + shoeSize.GetValue("Vera"));
+
+            string shoeSizekey = "Vera";
+
+
+            Console.WriteLine("Simple Dictionary: string, int");
+            Console.WriteLine("Pair " + shoeSize.GetPair(shoeSizekey) + ": " + shoeSizekey + ", " + shoeSize.GetValue(shoeSizekey));
+            Console.WriteLine();
+
+            SimpleDictioanry<bool, double> numbers = new SimpleDictioanry<bool, double>();
+
+            numbers.Add(true, -64);
+            numbers.Add(false, 404);
+
+
+            bool numberskey = false;
+
+            
+            Console.WriteLine("SimpleDictionary: bool, double");
+            Console.WriteLine("Pair " + numbers.GetPair(numberskey) + ": " + numberskey.ToString() + ", " + numbers.GetValue(numberskey));
+            Console.WriteLine();
+
+            SimpleDictioanry<string, double> prices= new SimpleDictioanry<string, double>();
+
+            prices.Add("Piano", 30000);
+            prices.Add("Banana", 0.4125);
+            prices.Add("Dog", 5000);
+            prices.Add("Jacket", 120);
+            prices.Add("Something", 552.6423);
+
+
+            string priceskey = "Dog";
+
+
+            Console.WriteLine("SimpleDictionary: string, double");
+            Console.WriteLine("Pair: " + prices.GetPair("Dog") + ": " + priceskey + ", " + prices.GetValue(priceskey));
             Console.WriteLine();
         }
     }

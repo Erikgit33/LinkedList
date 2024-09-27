@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,16 +10,25 @@ namespace LinkedList
 {
     internal class SimpleDictioanry<K,V>
     {
-        Dictionary<K, V> dict = new Dictionary<K, V>();
-        public void Add(K Key, V value)
+        List<Pair<K, V>> list = new List<Pair<K, V>>();
+        public int pairIndex = 0;
+
+        public void Add(K Key, V Value)
         {
-            dict.Add(Key, value);
+            Pair<K, V> pair = new Pair<K, V>(Key, Value); 
+            list.Add(pair);
         }
         public bool Contains(K Key)
         {
-            if (dict.ContainsKey(Key))
+            pairIndex = 0;
+            foreach (Pair<K, V> pair in list)
             {
-                return true;
+                bool contains = EqualityComparer<K>.Default.Equals(pair.key, Key);
+                if (contains) 
+                {
+                    return true;
+                }
+                pairIndex++;
             }
             return false;
         }
@@ -26,7 +37,19 @@ namespace LinkedList
         {
             if (Contains(Key)) 
             {
-                return dict[Key];
+                return list[pairIndex].value;
+            }
+            else
+            {
+                throw new KeyNotFoundException();
+            }
+        }
+
+        public int GetPair(K Key)
+        {
+            if (Contains(Key))
+            {
+                return pairIndex + 1;
             }
             else
             {
