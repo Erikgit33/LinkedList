@@ -66,16 +66,28 @@ namespace LinkedList
             Console.WriteLine("(RemoveFirst)");
             Console.WriteLine("New element at 0: " + myList4.ElementAt(0));
             Console.WriteLine();
-        
+
             //
             // GenericDuplicateList
             //
 
-            GenericDuplicateList<int> dup = new GenericDuplicateList<int>();    
+            GenericDuplicateList<int> dup1 = new GenericDuplicateList<int>();
 
-            List<int> list = new List<int> { 53, 72, 63, 53, 745, 12, 745 };
-            Console.WriteLine("Before: " + string.Join(",", list));
-            Console.WriteLine("After: " + string.Join(",", dup.Duplicates(list)));
+            Console.WriteLine("GenericDuplicateList: int");
+
+            List<int> list1 = new List<int> { 53, 72, 63, 53, 745, 12, 745 };
+            Console.WriteLine("Before: " + string.Join(",", list1));
+            Console.WriteLine("After: " + string.Join(",", dup1.Duplicates(list1)));
+            Console.WriteLine();
+
+
+            GenericDuplicateList<string> dup2 = new GenericDuplicateList<string>();
+
+            Console.WriteLine("GenericDuplicateList: string");
+
+            List<string> list2 = new List<string> { "Vattenmelon", "Persika", "Banan", "Kiwi", "Satsuma", "Banan", "Vattenmelon", "Drakfrukt" };
+            Console.WriteLine("Before: " + string.Join(",", list2));
+            Console.WriteLine("After: " + string.Join(",", dup2.Duplicates(list2)));
             Console.WriteLine();
 
             //
@@ -87,9 +99,10 @@ namespace LinkedList
             shoeSize.Add("Lasse", 43);
             shoeSize.Add("Peter", 42);
             shoeSize.Add("Vera", 37);
+            shoeSize.Add("Lennart", 41);
 
 
-            string shoeSizekey = "Vera";
+            string shoeSizekey = "Lennart";
 
 
             Console.WriteLine("Simple Dictionary: string, int");
@@ -118,7 +131,7 @@ namespace LinkedList
             prices.Add("Something", 552.6423);
 
 
-            string priceskey = "Dog";
+            string priceskey = "Piano";
 
 
             Console.WriteLine("SimpleDictionary: string, double");
